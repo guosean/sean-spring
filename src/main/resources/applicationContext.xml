@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+">
+
+    <!--<aop:config proxy-target-class="true" expose-proxy="true">
+        <aop:aspect id="" order="" ref="" ></aop:aspect>
+    </aop:config>
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true">
+        <aop:include name="" ></aop:include>
+    </aop:aspectj-autoproxy>-->
+
+    <context:component-scan base-package="com.sean"/>
+    <context:component-scan base-package="org.apache.kafka.clients.consumer" />
+   <!-- <aop:aspectj-autoproxy/>
+    <bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator"/>-->
+    <context:property-placeholder location="application.properties" />
+    <bean id="employee" class="com.sean.context.Employee">
+        <property name="name" value="sean"></property>
+        <property name="age" value="18"></property>
+    </bean>
+
+</beans>
