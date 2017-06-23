@@ -27,17 +27,18 @@ public class TransactionService {
     @Resource
     private JdbcTemplate jdbcTemplate;
 
+    @Resource
+    private PropagationService propagationService;
+
     public List<Map<String,Object>> queryEmployee(){
         return jdbcTemplate.queryForList("select * from employee");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void saveEmployee(Employee employee){
-        jdbcTemplate.execute("insert into employee (id, staff_id, name, mobile, area, gender, is_valid) values('8','8','sean','15110042222','北京','1','1')");
-        try {
-            updateEmployee();
-        }catch (Exception e){}
-
+        jdbcTemplate.execute("insert into employee (id, staff_id, name, mobile, area, gender, is_valid) values('11','9','sean','15110042222','北京','1','1')");
+//        propagationService.updateEmployee();
+        updateEmployee();
     }
 
     @Transactional(propagation = Propagation.NEVER)
